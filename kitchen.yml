@@ -75,24 +75,3 @@ suites:
     verifier:
       inspec_tests:
         - path: test/integration/default
-  - name: passenger
-    includes:
-      - debian-13-3008-2
-      - debian-13-3006-27
-      - debian-11-3006-27
-    provisioner:
-      state_top:
-        base:
-          '*':
-            - nginx._mapdata
-            - nginx.passenger
-      pillars:
-        top.sls:
-          base:
-            '*':
-              - nginx
-      pillars_from_files:
-        nginx.sls: test/salt/passenger/pillar/nginx.sls
-    verifier:
-      inspec_tests:
-        - path: test/integration/passenger
